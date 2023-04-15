@@ -36,8 +36,7 @@ public class PilhaGenerica<T>
         return topo == n - 1;
     }
 
-    public T pop()
-    {
+    public T pop(){
         T elemento;
 
         if (!this.vazia()){
@@ -45,14 +44,11 @@ public class PilhaGenerica<T>
             return elemento;
         }
         else{
-            //Impress�o para fins did�ticos
-            System.out.println("Pilha vazia: pop nao funcionou.");
             return null;
         }
     }
 
-    public boolean push(T elemento)
-    {
+    public boolean push(T elemento){
         if (!this.cheia())
         {
             vetor.add(++topo, elemento);
@@ -60,20 +56,21 @@ public class PilhaGenerica<T>
         }
         else
         {
-            //Impress�o para fins did�ticos
-            System.out.println("Pilha cheia: push nao funcionou.\n");
             return false;
         }
     }
 
-    public boolean retornaTopo(T elemento)
-    {
+    public boolean retornaTopo(T elemento){
         if(!this.vazia()){
             elemento = vetor.get(topo);
             return true;
         }
         else
             return false;
+    }
+
+    public int quantidadeElementos(){
+        return this.vetor.size();
     }
 
 
@@ -100,6 +97,17 @@ public class PilhaGenerica<T>
         return objeto;
     }
 
+    public void inverter(){
+        PilhaGenerica<T> pilhaInvertida = new PilhaGenerica<>(n);
+
+        while(!this.vazia())
+            pilhaInvertida.push(this.pop());
+
+        this.topo = pilhaInvertida.topo;
+        this.vetor = pilhaInvertida.vetor;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -120,5 +128,19 @@ public class PilhaGenerica<T>
     @Override
     public int hashCode() {
         return Objects.hash(vetor);
+    }
+
+    @Override
+    public String toString(){
+        String toString = "";
+
+        for(int i = 0; i <= topo; i++){
+            toString += this.vetor.get(i).toString();
+
+            if(i < topo)
+                toString += " ";
+        }
+
+        return toString;
     }
 }

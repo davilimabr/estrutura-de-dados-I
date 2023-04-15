@@ -1,63 +1,33 @@
 package lista1.exec6;
 
+import lista1.StringFormato.StringFormato;
 import lista1.exec4.PilhaGenerica;
-/*
+
+
 public class LetrasInvertidasDePalavrasNaFrase {
+    public static String inverterMantendoOrdemPalavras(String frase){
+        PilhaGenerica<Character> pilhaFrase = StringFormato.converterStringParaPilha(frase);
+        PilhaGenerica<String> pilhaPalavras = new PilhaGenerica<>(StringFormato.contarOcorrencia(frase, ' ')+1);
 
+        String palavra = "";
 
-    // exercício 06
+        while(!pilhaFrase.vazia()){
+            Character ch = pilhaFrase.pop();
 
-    public String inverterMantendoOrdemPalavras(String frase){
+            if(ch == ' '){
+                pilhaPalavras.push(palavra);
+                palavra = "";
+            }
+            else if(pilhaFrase.vazia()){
+                palavra += ch;
+                pilhaPalavras.push(palavra);
+            }
+            else
+                palavra += ch;
+         }
+        pilhaPalavras.inverter();
 
- PilhaGenerica<Character> pilhaFrase = converterStringParaPilha(frase); // criar esse método e entender onde ele deve se encaixar melhor
-
- PilhaGenerica<String> pilhaPalavras = new PilhaGenerica<String>(contadorDeCaracter(frase, ' ')); // entender onde implementar esse código
-
-
-
-//“a maçã está podre
-
-boolean continua = true;
-
- while(continua){
-
-char ch = pilhaFrase.pop(); //ch e r d o p ' '
-
-String palavra = "";
-
-
- if(ch == ' ')
-
-pilhaPalavras.push(palavra); // pilha erdop átse ãçam a
-
-else
-
-palavra += ch; // palavra erdop
-
-
-
-
- if(pilhaFrase.vazia())
-
- continua = false;
-
- }
-
-
-
-
- return PilhaGenerica.inverterPilha(pilhaPalavras).toString();
-
+        return pilhaPalavras.toString();
     }
-
-
-
-
-    public int contadorDeCaracter(String str, char ch){
-
- return str.length() - str.replace(String.valueOf(ch), "").length();
-
-    }
-
 }
-     */
+

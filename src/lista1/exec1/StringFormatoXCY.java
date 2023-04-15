@@ -4,14 +4,14 @@ import lista1.StringFormato.StringFormato;
 import lista1.exec4.PilhaGenerica;
 
 
-public class StringFormatoXCY extends StringFormato{
+public class StringFormatoXCY{
     public static final char SEPARADOR = 'c';
     public static boolean verificaFormato(String texto){
-        texto = trataTexto(texto);
+        texto = StringFormato.trataTexto(texto);
         if(!letrasPermitidas(texto) || !texto.contains(""+SEPARADOR))
             return false;
 
-        PilhaGenerica<Character> pilhaEntrada = converterStringParaPilha(texto);
+        PilhaGenerica<Character> pilhaEntrada = StringFormato.converterStringParaPilha(texto);
         PilhaGenerica<Character> pilhaAuxiliar = new PilhaGenerica<>(texto.length());
 
         boolean continua = true;
