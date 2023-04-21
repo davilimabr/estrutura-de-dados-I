@@ -3,17 +3,24 @@ package lista2.exec2;
 import java.util.Vector;
 
 public class FilaGenerica<T>{
-	/* Atributos protected para serem usados na subclasse. */
+	protected final int TAMANHO_DEFAULT = 50;
 	protected int tamanho;    /* Tamanho do vetor */
 	protected Vector<T> vetor;    /* Vetor de elementos */
 	protected int ini;    /* Posicao do proximo elemento a ser retirado */
 	protected int n;    /* Numero de elementos na fila */
 
-	public FilaGenerica(int tam){
-		tamanho = tam;
-		vetor = new Vector<>(tam);
-		ini = 0;
-		n = 0;
+	public FilaGenerica(int tamanho){
+		inicializarAtributos(tamanho);
+	}
+	public FilaGenerica(){
+		inicializarAtributos(TAMANHO_DEFAULT);
+	}
+
+	protected void inicializarAtributos(int tamanho){
+		this.tamanho = tamanho;
+		this.vetor = new Vector<>(tamanho);
+		this.ini = 0;
+		this.n = 0;
 	}
 
 	public boolean vazia() {
@@ -50,6 +57,7 @@ public class FilaGenerica<T>{
 			return false;
 	}
 
+	//Método do exercício 2
 	public void combinaFilas(FilaGenerica fila1, FilaGenerica fila2){
 		if(fila1.getClass() != this.getClass() && fila2.getClass() != this.getClass())
 			return;
