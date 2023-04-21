@@ -75,24 +75,23 @@ public class PilhaGenerica<T>
 
 
     //MÉTODO DA QUESTÃO 4
-    public T retornaPosicao(int posicao){
-        if(posicao < 0 || posicao > topo){
-            System.out.println("posicao invalida\n");
-            return null;
-        }
-
+    public T removerElemento(T elemento){
         PilhaGenerica<T> pilhaAuxiliar = new PilhaGenerica<>(this.n);
 
         T objeto = null;
-        while(this.topo >= posicao){ // 29 28
-            objeto = this.pop();    // 30 29
+        boolean continua = true;
+        do{
+            objeto = this.pop();
 
-            pilhaAuxiliar.push(objeto);
+            if(objeto.equals(elemento))
+                continua = false;
+            else
+                pilhaAuxiliar.push(objeto);
         }
+        while(continua);
 
-        while(!pilhaAuxiliar.vazia()){
+        while(!pilhaAuxiliar.vazia())
             this.push(pilhaAuxiliar.pop());
-        }
 
         return objeto;
     }

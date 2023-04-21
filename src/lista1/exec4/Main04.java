@@ -10,10 +10,10 @@ public class Main04 {
             pilha.push(i);
         }
 
-        int esperado = 29;
-        int resultado = pilha.retornaPosicao(esperado-1);
+        int elementoRetirar = 29;
+        int resultado = pilha.removerElemento(elementoRetirar);
 
-        Assert.assertEquals(esperado, resultado);
+        Assert.assertEquals(elementoRetirar, resultado);
 
     }
 }
