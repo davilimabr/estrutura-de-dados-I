@@ -1,4 +1,8 @@
-package lista2.exec2;
+package lista2.FilaGenerica;
+
+import lista1.exec3.PilhaDuplaDeInteiros;
+import lista1.exec4.PilhaGenerica;
+import lista2.exec4.FilaDuplaGenerica;
 
 import java.util.Vector;
 
@@ -31,7 +35,6 @@ public class FilaGenerica<T>{
 		return (n == tamanho);
 	}
 
-	//Retiramos o elemento do início da fila
 	public T remove(){
 		T elemento = null;
 
@@ -44,7 +47,6 @@ public class FilaGenerica<T>{
 		return elemento;
 	}
 
-	//Inserimos o elemento no final da fila
 	public boolean insere(T elemento) {
 		int fim;
 
@@ -57,7 +59,7 @@ public class FilaGenerica<T>{
 			return false;
 	}
 
-	//Método do exercício 2
+	//METODO DO EXERCICIO 2 ----------------------------------------------
 	public void combinaFilas(FilaGenerica fila1, FilaGenerica fila2){
 		if(fila1.getClass() != this.getClass() && fila2.getClass() != this.getClass())
 			return;
@@ -76,19 +78,27 @@ public class FilaGenerica<T>{
 		}
 	}
 
+	//METODO DO EXERCICIO 4 -----------------------------------------------
+	public static FilaDuplaGenerica FilaParaFilaDupla(FilaGenerica fila){
+		FilaDuplaGenerica filaDupla = new FilaDuplaGenerica(fila.tamanho);
+
+		while(!fila.vazia()){
+			filaDupla.insere(fila.remove());
+		}
+
+		return filaDupla;
+	}
+
 	@Override
 	public String toString(){
 		String string = "";
 
-		for(int i = ini; i < ini + n; i++){
+		for(int i = ini, count = 0; count < n; count++){
 			string += this.vetor.get(i).toString() + "  ";
+
+			i = (i == tamanho-1) ? 0 : i+1;
 		}
 
-		if(ini > 0 && (ini + n) > tamanho){
-			for(int i = 0; i < ini; i++){
-				string += this.vetor.toString() + "  ";
-			}
-		}
 		return string;
 	}
 }

@@ -1,6 +1,8 @@
 
 package lista2.exec2;
 
+import lista2.FilaGenerica.FilaGenerica;
+
 public class Main2 {
     public static void main(String[] args){
         int tamFilas = 20;

@@ -1,6 +1,6 @@
 package lista2.exec3;
 
-import lista2.exec2.FilaGenerica;
+import lista2.FilaGenerica.FilaGenerica;
 
 import java.util.Vector;
 

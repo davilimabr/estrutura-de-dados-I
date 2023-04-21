@@ -1,6 +1,6 @@
 package lista2.exec1;
 
-import lista2.exec2.FilaGenerica;
+import lista2.FilaGenerica.FilaGenerica;
 
 public class SistemaOperacional {
     private final int QUANTIDADE_MAXIMA_PROCESSOS = 500;
