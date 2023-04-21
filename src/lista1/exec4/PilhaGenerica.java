@@ -6,25 +6,24 @@ import java.util.Vector;
 
 public class PilhaGenerica<T>
 {
-    private final int TAMANHO_DEFAULT = 50;
+    protected final int TAMANHO_DEFAULT = 50;
     private int n;
     private Vector<T> vetor;
     private int topo;
 
-    public PilhaGenerica(int tamanho)
-    {
-        n = tamanho;
-        vetor = new Vector<T>(tamanho);
-        topo = -1;
+    public PilhaGenerica(int tamanho){
+        inicializarAtributos(tamanho);
     }
 
-    public PilhaGenerica()
-    {
+    public PilhaGenerica(){
+        inicializarAtributos(TAMANHO_DEFAULT);
+    }
+
+    protected void inicializarAtributos(int tamanho){
         n = TAMANHO_DEFAULT;
         vetor = new Vector<T>(TAMANHO_DEFAULT);
         topo = -1;
     }
-
 
     public boolean vazia()
     {
