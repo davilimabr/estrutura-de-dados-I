@@ -1,8 +1,8 @@
 ## Índice
 ### Lista 1: Pilhas
-[Enunciados](#enum1) - [Resoluções](#res1)
+[Enunciados][enum1] - [Resoluções][res1]
 ### Lista 2: Fila circular e fila circular dupla
-[Enunciados](#enum2) - [Resoluções](#res2)
+[Enunciados][enum2] - [Resoluções][res2]
 
 
 
