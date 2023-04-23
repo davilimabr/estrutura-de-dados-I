@@ -1,4 +1,4 @@
-package lista1.exec07;
+package lista1.exec7;
 
 import lista1.StringFormato.StringFormato;
 import lista1.exec4.PilhaGenerica;

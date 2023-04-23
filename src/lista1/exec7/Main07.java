@@ -1,6 +1,5 @@
-package lista1.exec07;
+package lista1.exec7;
 
-import lista1.exec1.StringFormatoXCY;
 import org.junit.Assert;
 
 public class Main07 {
