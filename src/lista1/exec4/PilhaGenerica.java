@@ -20,8 +20,8 @@ public class PilhaGenerica<T>
     }
 
     protected void inicializarAtributos(int tamanho){
-        n = TAMANHO_DEFAULT;
-        vetor = new Vector<T>(TAMANHO_DEFAULT);
+        n = tamanho;
+        vetor = new Vector<T>(tamanho);
         topo = -1;
     }
 
