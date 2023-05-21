@@ -154,7 +154,7 @@ public class ListaCircular extends Lista {
         return merge;
     }
 
-    /* QUESTÃO 2
+    /* QUESTÃO 3
      A complexidade desse método é O(n²), sendo n a quantidade de elos da lista.
      Isso porque a complexidade do método insere é O(n) e está dentro de um loop.
      temos: O(n) * O(n) = O(n²)
