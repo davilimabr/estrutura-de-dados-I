@@ -1,9 +1,5 @@
 package lista5.Listas;
 
-import lista4.Listas.ListaGenerica;
-
-import java.util.Objects;
-
 public class ListaDuplamente
 {
 	protected Elo prim;
@@ -142,7 +138,6 @@ public class ListaDuplamente
 
 		return l1;
 	}
-
 
 	@Override
 	public String toString(){
