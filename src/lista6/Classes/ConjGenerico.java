@@ -98,6 +98,9 @@ public class ConjGenerico<T extends Comparable<T>>
 
 		Elo q = new Elo(valor);
 
+		if(prim == null)
+			menorElemento = maiorElemento = q;
+
 		if (p == prim){
 			prim = q;
 			menorElemento = q;
@@ -219,7 +222,7 @@ public class ConjGenerico<T extends Comparable<T>>
 		System.out.println();
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /*
 	QUESTÃO 1:
@@ -265,81 +268,148 @@ public class ConjGenerico<T extends Comparable<T>>
 
     /*
 	QUESTÃO 3:
-		O método inicialmente verifica o se o universo é vazio ou nulo, e lança uma exceção. Depois percorre o conjunto atual e utiliza o método pertence, chamado a partir de universo,
-		para verificar se o elemento pertence ao universo. Em seguida se segue um loop percorrendo o conjunto universo, que verifica se cada elo pertence ao conjunto corrente, caso não seja,
-		adiciona em complementar.
+		O método utiliza a ordenação dos conjuntos para verificar quais elementosdo conjunto universo não estão no conjunto corrente.
+		temos: O(n) + O(m)
+		 		O(n+m)
 
-		Como o método pertence possui complexidade O(n)
-		temos: O(n) * O(m) +  O(m) * ( O(n) + O(n) )
-		 				O(n*m) + O(m*2n) -> possui crescimento assintótico equivalente a O(n*m)
+		OBS: o método eSubconjunto tem tempo de execução constante, logo não influencia na complexidade.
 
-		Sendo N a quantidade de elos do conjunto atual e M a do conjunto universo.
-
-		OBS: Lembrando a complexidade dos métodos chamados dentro do loop:
-			pertence - O(n)
-			insere - O(n)
-
-		complexidade O(n*m)
+		A complexidade do método complementar é O(n + m), onde n é o número de elementos no conjunto corrente e m é o número de elementos no conjunto universo.
 	 */
-	public ConjGenerico<T> complementar(ConjGenerico<T> universo) throws Exception{
-		if(universo == null || universo.vazio()) throw new Exception("O conjunto universo é vazio.");
 
-		for(Elo p = prim; p != null; p = p.prox)
-			if(!universo.pertence(p.dado))
-				throw new Exception("O conjunto corrente possui elementos fora do conjunto universo.");
+	public ConjGenerico<T> complementar(ConjGenerico<T> universo) throws Exception{
+		if (universo.vazio())  throw new Exception("O conjunto universo é vazio e o corrente não.");
+
+		if(menorElemento.dado.compareTo(universo.menorElemento.dado) < 0 || maiorElemento.dado.compareTo(universo.maiorElemento.dado) > 0)
+			throw new Exception("O conjunto corrente possui elementos fora do conjunto universo.");
 
 		ConjGenerico<T> complementar = new ConjGenerico<>();
-		for(Elo p = universo.prim; p != null; p = p.prox)
-			if(!this.pertence(p.dado))
-				complementar.insere(p.dado);
+		Elo p = prim, pUni = universo.prim, pCom = null;
+
+		while(p != null)
+			if(p.dado.compareTo(pUni.dado) > 0){
+				Elo elo = new Elo(pUni.dado);
+
+				if(pCom == null)
+					complementar.prim = elo;
+				else
+					pCom.prox = elo;
+
+				pCom = elo;
+				pUni = pUni.prox;
+			}
+			else{
+				p = p.prox;
+				pUni = pUni.prox;
+			}
+
+		if(pUni != null)
+			while(pUni != null){
+				Elo elo = new Elo(pUni.dado);
+
+				pCom.prox = elo;
+				pCom = elo;
+				pUni = pUni.prox;
+			}
 
 		return complementar;
 	}
 
+	// Essa segunda implementação usa os métodos dos próximos exercicios e possui a mesma complexidade O(n+m)
+	public ConjGenerico<T> complementarAlternativo(ConjGenerico<T> universo) throws Exception{
+		if (universo.vazio())  throw new Exception("O conjunto universo é vazio e o corrente não.");
+
+		if(!eSubconjunto(universo))
+			throw new Exception("O conjunto corrente possui elementos fora do conjunto universo.");
+
+		return diferenca(universo);
+	}
+
 	/*
 	QUESTÃO 4:
-		O método percorre todos os elementos do conjunto corrente e verifica para cada um se ele pertence ao conjunto fornecido como parâmetro, caso um não pertença, já é retornado false,
-		pois já se sabe que o conjunto atual não é subconjunto do fornecido.
-		temos: O(n) * O(m) = O(n*m)
-		Sendo N a quantidade de elementos do conjunto corrente e M a quantidade de elementos do conjunto fornecido
+		O método leva em consideração a ordenação dos conjuntos, caso o menorElmento do conjunto corrente seja menor que o menorElemento do conjunto fornecido, então não é
+		subConjunto, o mesmo vale para caso o maiorElemento seja maior que o maiorElemento do conjunto fornecido.
 
-		complexidade O(n*m)
+		complexidade O(1)
 	 */
 	public boolean eSubconjunto(ConjGenerico<T> conj2){
-		for(Elo p = prim; p != null; p = p.prox)
-			if(!conj2.pertence(p.dado))
-				return false;
+		if(prim == null)
+			return true;
+		if(conj2 == null || conj2.prim == null)
+			return false;
 
-		return true;
+		return menorElemento.dado.compareTo(conj2.menorElemento.dado) >= 0 && maiorElemento.dado.compareTo(conj2.maiorElemento.dado) <= 0;
 	}
 
 	/*
 	QUESTÃO 5:
-		o método percorre o conjunto corrente, veficando para cada elemento se ele pertence ao conjunto fornecido, se não pertencer, insere no conjunto diferença.
-		Em seguida o mesmo processo é realizado, mas agora percorrendo o conjunto fornecido e verificando se pertence ao conjunto corrente.
-		temos: ( O(n) * (O(m) + O(m)) ) + ( O(m) * (O(n) + O(n)) )
-				O(n*2m)  +  O(m*2n)
-					O(n*m) -> ignorando as constantes multiplicativas
+		o método leva em consideração a ordenação dos conjuntos para comparar os elementos e saber se são diferentes.
+
+		temos: O(n+m)  + ( O(n) + O(m) )
+				O(n+m)  +  O(n+m)
+					O(2n+2m) -> ignorando as constantes multiplicativas
+					O(n+m)
+		Logo, o crescimento assintótico equivalente do método é O(n*m).
 		Sendo N a quantidade de elos do conjunto corrente e M a do conjunto fornecido.
 
-		Logo, o crescimento assintótico equivalente do método é O(n*m).
-
-		OBS: Lembrando a complexidade dos métodos chamados dentro do loop:
-				pertence - O(n)
-				insere - O(n)
-
-		complexidade O(n*m)
+		complexidade O(n+m)
 	 */
 	public ConjGenerico<T> diferenca(ConjGenerico<T> conj2){
 		ConjGenerico<T> diferenca = new ConjGenerico<>();
 
-		for(Elo p = prim; p != null; p = p.prox)
-			if(!conj2.pertence(p.dado))
-				diferenca.insere(p.dado);
+		Elo p = prim, p2 = conj2.prim, pDif = null;
+		while(p != null && p2 != null)
+			if(p.dado.compareTo(p2.dado) < 0){
+				Elo elo = new Elo(p.dado);
 
-		for(Elo p = conj2.prim; p != null; p = p.prox)
-			if(!this.pertence(p.dado))
-				diferenca.insere(p.dado);
+				if(pDif == null)
+					diferenca.prim = elo;
+				else
+					pDif.prox = elo;
+
+				pDif = elo;
+				p = p.prox;
+			}
+			else if(p.dado.compareTo(p2.dado) > 0){
+				Elo elo = new Elo(p2.dado);
+
+				if(pDif == null)
+					diferenca.prim = elo;
+				else
+					pDif.prox = elo;
+
+				pDif = elo;
+				p2 = p2.prox;
+			}
+			else{
+				p = p.prox;
+				p2 = p2.prox;
+			}
+
+		if(p != null)
+			while (p != null){
+				Elo elo = new Elo(p.dado);
+
+				if(pDif == null)
+					diferenca.prim = elo;
+				else
+					pDif.prox = elo;
+
+				pDif = elo;
+				p = p.prox;
+			}
+		else if(p2 != null)
+			while (p2 != null){
+				Elo elo = new Elo(p2.dado);
+
+				if(pDif == null)
+					diferenca.prim = elo;
+				else
+					pDif.prox = elo;
+
+				pDif = elo;
+				p2 = p2.prox;
+			}
 
 		return diferenca;
 	}
@@ -373,6 +443,22 @@ public class ConjGenerico<T extends Comparable<T>>
 			return false;
 
 		return eIgualRecursividade(elo1.prox, elo2.prox);
+	}
+
+	/*
+	QUESTÃO 7:
+		O método utiliza os métodos implementados nos exercícios anteriores para aplicar a Lei De Morgan.
+		temos: O(n+m) + O(n+m) + O(n+m)
+					  O(3n+3m) -> ignorando as constantes multiplicativas
+					  O(n+m)
+
+		complexidade O(n+m)
+	 */
+	public static ConjGenerico aplicaDeMorgan(ConjGenerico universo, ConjGenerico conj1, ConjGenerico conj2) throws Exception{
+		ConjGenerico complementoConj1 = conj1.complementar(universo);
+		ConjGenerico complementoConj2 = conj2.complementar(universo);
+
+		return complementoConj1.intersecao(complementoConj2);
 	}
 }
 
