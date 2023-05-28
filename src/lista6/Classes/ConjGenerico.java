@@ -1,11 +1,9 @@
 package lista6.Classes;
 public class ConjGenerico<T extends Comparable<T>>
 {
-	private Elo prim;  /* Referência para primeiro elemento. */
-	private Elo maiorElemento;
-	private Elo menorElemento;
+	private Elo prim;
+	private Elo ult;
 
-	/* Classe auxiliar para guardar cada elemento do conjunto. */
 	private class Elo{
 		T dado;
 		Elo prox;
@@ -25,14 +23,10 @@ public class ConjGenerico<T extends Comparable<T>>
 		}
 	}
 
-	/* Construtor que cria um conjunto vazio. */
 	public ConjGenerico(){
-		prim = null;
-		maiorElemento = null;
-		menorElemento = null;
+		prim = ult = null;
 	}
 
-	/* Método privado para realizar uma cópia de um outro conjunto. */
 	private void copia(ConjGenerico<T> conj2){
 		Elo ult = null, q;
 
@@ -50,7 +44,6 @@ public class ConjGenerico<T extends Comparable<T>>
 		}
 	}
 
-	/* Método privado para realizar uma cópia de um outro conjunto. */
 	public void apaga(){
 		for (Elo p = prim; p != null; p = prim) {
 			prim = prim.prox;
@@ -58,7 +51,6 @@ public class ConjGenerico<T extends Comparable<T>>
 		}
 	}
 
-	/* Simula uma sobrecarga do operador de atribuição. */
 	public ConjGenerico<T> atribui(ConjGenerico<T> conj2){
 		if (this != conj2) {
 			apaga();
@@ -68,12 +60,10 @@ public class ConjGenerico<T extends Comparable<T>>
 		return this;
 	}
 
-	/* Testa se o conjunto está vazio. */
 	public boolean vazio(){
 		return prim == null;
 	}
 
-	/* Teste de pertinência. Usa fato de estar ordenado. */
 	public boolean pertence(T valor){
 		Elo p;
 
@@ -84,8 +74,6 @@ public class ConjGenerico<T extends Comparable<T>>
 		return true;
 	}
 
-	/* Inserção de elemento no conjunto. Usa fato de estar ordenado.
-       Retorna false se elemento já estava lá. */
 	public boolean insere(T valor){
 		Elo p = prim, ant = null;
 
@@ -99,13 +87,12 @@ public class ConjGenerico<T extends Comparable<T>>
 		Elo q = new Elo(valor);
 
 		if(prim == null)
-			menorElemento = maiorElemento = q;
+			ult = q;
 
-		if (p == prim){
+		if (p == prim)
 			prim = q;
-			menorElemento = q;
-		} else{
-			if(p == null) maiorElemento = q;
+		else{
+			if(p == null) ult = q;
 			ant.prox = q;
 		}
 
@@ -129,11 +116,10 @@ public class ConjGenerico<T extends Comparable<T>>
 		if (p == null)
 			return false;
 
-		if (p == prim) {
+		if (p == prim)
 			prim = prim.prox;
-			menorElemento = prim;
-		} else{
-			if(p.prox == null) maiorElemento = ant;
+		else{
+			if(p.prox == null) ult = ant;
 			ant.prox = p.prox;
 		}
 
@@ -233,12 +219,12 @@ public class ConjGenerico<T extends Comparable<T>>
 
 	// Complexidade O(1)
 	public T obterMaiorElemento(){
-		return maiorElemento.dado;
+		return (ult != null) ? ult.dado : null;
 	}
 
 	// Complexidade O(1)
 	public T obterMenorElemento(){
-		return menorElemento.dado;
+		return (prim != null) ? prim.dado : null;
 	}
 
 
@@ -280,7 +266,8 @@ public class ConjGenerico<T extends Comparable<T>>
 	public ConjGenerico<T> complementar(ConjGenerico<T> universo) throws Exception{
 		if (universo.vazio())  throw new Exception("O conjunto universo é vazio e o corrente não.");
 
-		if(menorElemento.dado.compareTo(universo.menorElemento.dado) < 0 || maiorElemento.dado.compareTo(universo.maiorElemento.dado) > 0)
+		if(obterMenorElemento().compareTo(universo.obterMenorElemento()) < 0 ||
+				obterMaiorElemento().compareTo(universo.obterMaiorElemento()) > 0)
 			throw new Exception("O conjunto corrente possui elementos fora do conjunto universo.");
 
 		ConjGenerico<T> complementar = new ConjGenerico<>();
@@ -338,7 +325,8 @@ public class ConjGenerico<T extends Comparable<T>>
 		if(conj2 == null || conj2.prim == null)
 			return false;
 
-		return menorElemento.dado.compareTo(conj2.menorElemento.dado) >= 0 && maiorElemento.dado.compareTo(conj2.maiorElemento.dado) <= 0;
+		return obterMenorElemento().compareTo(conj2.obterMenorElemento()) >= 0 &&
+				obterMaiorElemento().compareTo(conj2.obterMaiorElemento()) <= 0;
 	}
 
 	/*
