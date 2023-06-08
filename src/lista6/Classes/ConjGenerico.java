@@ -325,8 +325,8 @@ public class ConjGenerico<T extends Comparable<T>>
 		if(conj2 == null || conj2.prim == null)
 			return false;
 
-		return obterMenorElemento().compareTo(conj2.obterMenorElemento()) >= 0 &&
-				obterMaiorElemento().compareTo(conj2.obterMaiorElemento()) <= 0;
+		return prim.dado.compareTo(conj2.prim.dado) >= 0 &&
+				ult.dado.compareTo(conj2.ult.dado) <= 0;
 	}
 
 	/*
@@ -374,30 +374,24 @@ public class ConjGenerico<T extends Comparable<T>>
 				p2 = p2.prox;
 			}
 
+		Elo q = null;
+
 		if(p != null)
-			while (p != null){
-				Elo elo = new Elo(p.dado);
-
-				if(pDif == null)
-					diferenca.prim = elo;
-				else
-					pDif.prox = elo;
-
-				pDif = elo;
-				p = p.prox;
-			}
+			q = p;
 		else if(p2 != null)
-			while (p2 != null){
-				Elo elo = new Elo(p2.dado);
+			q = p2;
 
-				if(pDif == null)
-					diferenca.prim = elo;
-				else
-					pDif.prox = elo;
+		while (q != null){
+			Elo elo = new Elo(q.dado);
 
-				pDif = elo;
-				p2 = p2.prox;
-			}
+			if(pDif == null)
+				diferenca.prim = elo;
+			else
+				pDif.prox = elo;
+
+			pDif = elo;
+			q = q.prox;
+		}
 
 		return diferenca;
 	}
