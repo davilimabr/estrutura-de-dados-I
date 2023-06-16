@@ -17,6 +17,8 @@ public class Main5 {
                 break;
         }
 
+        System.out.println("\n torna em raiz: " + num);
+
         arvore.tornaRaiz(num);
 
         System.out.println("\n");

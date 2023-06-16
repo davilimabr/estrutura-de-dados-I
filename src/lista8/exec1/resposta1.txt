@@ -1,0 +1,18 @@
+Uma heap é uma estrutura de dados em forma de árvore binária completa, em que cada nó possue um valor de chave associado, que será utilzado como
+critério de ordenação de prioridade, cada nó pai tem um valor maior ou igual ao de seus nós filhos (na chamada HeapBinariaMaxima) ou um valor
+menor ou igual aos seus nós filhos (na chamada HeapBinariaMinima).
+
+Exemplo:
+
+Nessa heap max, o maior valor é 99, que está na raiz.
+Cada nó pai tem um valor maior ou igual aos seus nós filhos.
+Por exemplo, o nó pai 80 é maior do que os nós filhos 61 e 50, e assim por diante.
+
+               99
+             /    \
+           80      72
+         /   \    /   \
+       61    50  20    18
+
+Essa estrutura pode ser representada como um array da seguinte forma:
+[99, 80, 72, 61, 50, 20, 18]

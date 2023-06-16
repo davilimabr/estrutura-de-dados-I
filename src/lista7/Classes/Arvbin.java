@@ -429,36 +429,62 @@ public class Arvbin<T extends Comparable<T>>
 	/*
 	QUESTÃO 4:
 		A complexidade do método é O(n), pois, no pior dos casos, será executado n vezes com custo individual de O(1). Sendo n a quantidade de nós na arvore
+
+		OBS: o método recursivo buscaFolhaEsq não interfere na complexidade do deleteRecursivo pois ele é chamado apenas uma vez, que é no caso do nó possuir o valor
+		que esta sendo buscado e seus dois filhos serem não nulos. Sendo assim, a complexidade desse método é somada, e não multiplicada por cada nó. Ignorando a complexidade
+		menor, entre buscaFolhaEsq e o restante da implementação de deleteRecursivo, temos O(n).
+
 		temos: O(1) * n = O(n)
 	*/
 	public void delete(T valor){
+		Arvbin<T> ant = this;
+		deleteRecursivo(valor, ant);
+	}
+
+	private void deleteRecursivo(T valor, Arvbin<T> ant){
 		if (val != null && val.compareTo(valor) == 0) {
 			if (esq == null && dir == null)
-				val = null;
+				if(ant.esq == this)
+					ant.esq = null;
+				else
+					ant.dir = null;
 			else if (esq != null && dir != null) {
-				T novoValor = esq.buscaFolhaEsq();
-				val = novoValor;
-				esq.delete(novoValor);
+				Arvbin<T> folha = esq.buscaFolhaEsq();
+
+				if(ant.esq == this){
+					ant.esq = esq;
+					folha.esq = dir;
+				}
+				else{
+					ant.dir = esq;
+					folha.esq = dir;
+				}
+				esq = dir = null;
 			} else {
 				Arvbin<T> filho = (esq != null) ? esq : dir;
-				val = filho.val;
-				esq = filho.esq;
-				dir = filho.dir;
+
+				if(ant.esq == this)
+					ant.esq = filho;
+				else
+					ant.dir = filho;
+
+				filho = null;
 			}
 		}
 		else {
+			ant = this;
 			if(esq != null)
-				esq.delete(valor);
+				esq.deleteRecursivo(valor, ant);
 			if(dir != null)
-				dir.delete(valor);
+				dir.deleteRecursivo(valor, ant);
 		}
 	}
 
-	private T buscaFolhaEsq(){
+	private Arvbin<T> buscaFolhaEsq(){
 		if(esq != null)
 			return esq.buscaFolhaEsq();
 		else
-			return val;
+			return this;
 	}
 
 
@@ -468,13 +494,51 @@ public class Arvbin<T extends Comparable<T>>
 		complexidade O(n)
 	 */
 	public void tornaRaiz(T valor){
-		Arvbin<T> novaRaiz = busca(valor);
+		Arvbin<T> ant, raiz;
+		ant = raiz = this;
 
-		val = novaRaiz.val;
-		esq = novaRaiz.esq;
-		dir = novaRaiz.dir;
+		tornaRaizRecursivo(valor, raiz, ant);
 	}
 
+	private Arvbin<T> tornaRaizRecursivo(T valor, Arvbin<T> raiz, Arvbin<T> ant){
+		if(val != null && val.compareTo(valor) == 0){
+			if(esq == null && dir == null){
+				if(ant.esq == this)
+					ant.esq = null;
+				else
+					ant.dir = null;
+			}
+			else if(esq != null && dir != null){
+				Arvbin<T> folha = esq.buscaFolhaEsq();
+
+				if(ant.esq == this){
+					ant.esq = esq;
+					folha.esq = dir;
+				}
+				else{
+					ant.dir = esq;
+					folha.esq = dir;
+				}
+				dir = null;
+			}
+			else{
+				Arvbin<T> filho = (esq != null) ? esq: dir;
+
+				if(ant.esq == this)
+					ant.esq = filho;
+				else
+					ant.dir = filho;
+			}
+			esq = raiz;
+		}
+		else{
+			ant = this;
+			if(esq != null)
+				esq.tornaRaizRecursivo(valor, raiz, ant);
+			if(dir != null)
+				dir.tornaRaizRecursivo(valor,raiz, ant);
+		}
+	}
 
 
 	/*

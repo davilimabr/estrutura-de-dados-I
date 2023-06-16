@@ -6,8 +6,11 @@ import java.util.Random;
 
 public class Main4 {
     public static void main(String[] args){
-        //testeArvDegenerada();
+        testeArvDegenerada();
+        System.out.println("\n");
         testeArvAleatoria();
+        System.out.println("\n");
+        testeRemoverFolha();
     }
 
     public static void testeArvDegenerada(){
@@ -43,5 +46,21 @@ public class Main4 {
         System.out.println("Foi removido o nó de valor: " + num);
 
         arvore.mostra();
+    }
+
+    public static void testeRemoverFolha(){
+        Arvbin<Integer> no1 = new Arvbin<>(54);
+        Arvbin<Integer> no2 = new Arvbin<>(66);
+        Arvbin<Integer> no3 = new Arvbin<>(88, no1,no2);
+        Arvbin<Integer> no4 = new Arvbin<>(63);
+        Arvbin<Integer> no5 = new Arvbin<>(46, no4, null);
+
+        Arvbin<Integer> raiz = new Arvbin<>(13, no3, no5);
+
+        raiz.mostra();
+        raiz.delete(63);
+        System.out.println("Foi removido o nó de valor: 46");
+
+        raiz.mostra();
     }
 }
