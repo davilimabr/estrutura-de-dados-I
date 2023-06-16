@@ -500,7 +500,7 @@ public class Arvbin<T extends Comparable<T>>
 		tornaRaizRecursivo(valor, raiz, ant);
 	}
 
-	private Arvbin<T> tornaRaizRecursivo(T valor, Arvbin<T> raiz, Arvbin<T> ant){
+	private void tornaRaizRecursivo(T valor, Arvbin<T> raiz, Arvbin<T> ant){
 		if(val != null && val.compareTo(valor) == 0){
 			if(esq == null && dir == null){
 				if(ant.esq == this)
