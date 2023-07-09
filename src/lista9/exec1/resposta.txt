@@ -1,0 +1,20 @@
+A sequência que não pode corresponder às chaves examinadas na busca pela chave de número 5 é a alternativa D.
+
+2, 7, 3, 8, 4, 5
+
+				  2
+			        \
+			         7
+			        /
+			       3
+			        \
+			         8
+			        /
+			       4
+			        \
+			         5
+
+essa seria a estrutura da árvore, representada apenas pelos valores de chaves percorridos e ignorando os possível outros valores à direita ou à esquerda,
+nela percebe-se que a chave 8 se encontra a direita da chave 3, por ser maior, porém 3 se encontra a esquerda da chave 7. Essa sequência não é possível, pois
+em uma árvore binária de busca toda a sub-árvore a esquerda é menor que o valor do nó e toda a sub-árvore da direita é maior que o valor do nó, no caso citado anteriormente
+temos a chave 8 fazendo parte da sub-árvore esquerda da chave 7, mesmo sendo maior.
