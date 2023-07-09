@@ -312,21 +312,25 @@ public class ConjGenerico<T extends Comparable<T>>
 		return diferenca(universo);
 	}
 
-	/*
-	QUESTÃO 4:
-		O método leva em consideração a ordenação dos conjuntos, caso o menorElmento do conjunto corrente seja menor que o menorElemento do conjunto fornecido, então não é
-		subConjunto, o mesmo vale para caso o maiorElemento seja maior que o maiorElemento do conjunto fornecido.
-
-		complexidade O(1)
-	 */
 	public boolean eSubconjunto(ConjGenerico<T> conj2){
-		if(prim == null)
-			return true;
-		if(conj2 == null || conj2.prim == null)
-			return false;
+		Elo p1 = conj2.prim;
+		Elo p2 = prim;
 
-		return prim.dado.compareTo(conj2.prim.dado) >= 0 &&
-				ult.dado.compareTo(conj2.ult.dado) <= 0;
+		while(p2 != null){
+			if(p1 == null) return false;
+
+			if(p2.dado.equals(p1.dado)){
+				p1 = p1.prox;
+				p2 = p2.prox;
+			}
+			else{
+				if(p2.dado.compareTo(p1.dado) < 0)
+					return false;
+				else if(p2.dado.compareTo(p1.dado) > 0)
+					p1 = p1.prox;
+			}
+		}
+		return true;
 	}
 
 	/*
