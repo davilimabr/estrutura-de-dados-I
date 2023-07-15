@@ -6,15 +6,15 @@ import java.util.NoSuchElementException;
 
 public class ArvBinBusca<Chave extends Comparable<Chave>, Valor> 
 {
-	private No raiz; /* Raiz da árvore. */
+	private No raiz; /* Raiz da ï¿½rvore. */
 
 	private class No
 	{
-		private Chave chave; /* Chave usada nas comparações. */
-		private Valor valor; /* Informação armazenada. */
-		private No esq, dir; /* Referências para subárvores esquerda e direita. */
+		private Chave chave; /* Chave usada nas comparaï¿½ï¿½es. */
+		private Valor valor; /* Informaï¿½ï¿½o armazenada. */
+		private No esq, dir; /* Referï¿½ncias para subï¿½rvores esquerda e direita. */
 
-		/* Cria um nó com chave e valor fornecidos e esq = dir = null. */
+		/* Cria um nï¿½ com chave e valor fornecidos e esq = dir = null. */
 		public No(Chave chave, Valor valor)
 		{
 			this.chave = chave;
@@ -23,8 +23,8 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
 			this.dir = null;
 		}
 		
-		/* Cria um nó com chave e valor fornecidos. As subárvores esq e dir são
-		 * passadas por parâmetro. */
+		/* Cria um nï¿½ com chave e valor fornecidos. As subï¿½rvores esq e dir sï¿½o
+		 * passadas por parï¿½metro. */
 		public No(Chave chave, Valor valor, No esq, No dir)
 		{
 			this.chave = chave;
@@ -35,7 +35,7 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
 	}
 	
 	/**
-	 *  Criação de uma árvore vazia. 
+	 *  Criaï¿½ï¿½o de uma ï¿½rvore vazia. 
 	 */
 	public ArvBinBusca()
 	{
@@ -43,9 +43,9 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
 	}
 	
 	/** 
-	 * Verifica se a árvore está vazia.
+	 * Verifica se a ï¿½rvore estï¿½ vazia.
 	 * 
-	 * @return se a árvore está vazia ou possui algum elemento
+	 * @return se a ï¿½rvore estï¿½ vazia ou possui algum elemento
 	 */
 	public boolean vazia()
 	{
@@ -53,7 +53,7 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
 	}
 	
 	/**
-	 * Apresenta o conteúdo da árvore em ordem simétrica.
+	 * Apresenta o conteï¿½do da ï¿½rvore em ordem simï¿½trica.
 	 */
 	public void mostra()
 	{
@@ -62,7 +62,7 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
 	
 	private void mostra(No x)
 	{
-		/* Caso base (critério de parada). */
+		/* Caso base (critï¿½rio de parada). */
 		if(x == null)
 			return;
 		
@@ -71,7 +71,7 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
 		/* Chamada recursiva para a esquerda. */
 		mostra(x.esq);
 		
-		/* Imprime a chave do nó corrente. */
+		/* Imprime a chave do nï¿½ corrente. */
 		System.out.print("<" + x.chave + ">");
 		
 		/* Chamada recursiva para a direita. */
@@ -81,15 +81,15 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
 	}
 	
     /**
-     * Retorna a menor chave da árvore.
+     * Retorna a menor chave da ï¿½rvore.
      *
-     * @return a menor chave da árvore
-     * @throws NoSuchElementException se a árvore está vazia
+     * @return a menor chave da ï¿½rvore
+     * @throws NoSuchElementException se a ï¿½rvore estï¿½ vazia
      */
     public Chave min()
     {
         if(vazia()) 
-        	throw new NoSuchElementException("Árvore está vazia!");
+        	throw new NoSuchElementException("ï¿½rvore estï¿½ vazia!");
         
         return min(raiz).chave;
     } 
@@ -102,14 +102,14 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     }
     
     /**
-     * Retorna o maior elemento da árvore.
+     * Retorna o maior elemento da ï¿½rvore.
      *
-     * @return o maior elemento da árvore
-     * @throws NoSuchElementException se a árvore está vazia
+     * @return o maior elemento da ï¿½rvore
+     * @throws NoSuchElementException se a ï¿½rvore estï¿½ vazia
      */
     public Chave max() {
         if(vazia()) 
-        	throw new NoSuchElementException("A árvore está vazia!");
+        	throw new NoSuchElementException("A ï¿½rvore estï¿½ vazia!");
         
         return max(raiz).chave;
     } 
@@ -122,10 +122,10 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     }
     
     /**
-     * Retorna o número de nós, isto é, pares (chave, valor), contidos na árvore 
-     * binária de busca.
+     * Retorna o nï¿½mero de nï¿½s, isto ï¿½, pares (chave, valor), contidos na ï¿½rvore 
+     * binï¿½ria de busca.
      * 
-     * @return o número de nós da árvore
+     * @return o nï¿½mero de nï¿½s da ï¿½rvore
      */
     public int tamanho()
     {
@@ -134,19 +134,19 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     
     private int tamanho(No x)
     {
-    	/* Caso base (critério de parada). */
+    	/* Caso base (critï¿½rio de parada). */
     	if(x == null)
     		return 0;
     	
-    	/* Chamada recursiva para subárvores esquerda e direita. */
+    	/* Chamada recursiva para subï¿½rvores esquerda e direita. */
     	return 1 + tamanho(x.esq) + tamanho(x.dir);
     }
     
     
     /**
-     * Retorna a altura da árvore binária de busca.
+     * Retorna a altura da ï¿½rvore binï¿½ria de busca.
      *
-     * @return a altura da árvore (uma árvore de um único nó possui altura 0)
+     * @return a altura da ï¿½rvore (uma ï¿½rvore de um ï¿½nico nï¿½ possui altura 0)
      */
     public int altura()
     {
@@ -165,26 +165,26 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     
     
     /**
-     * Essa árvore binária de busca contém a chave fornecida?
+     * Essa ï¿½rvore binï¿½ria de busca contï¿½m a chave fornecida?
      *
      * @param  chave a chave fornecida
-     * @return {@code true} se a árvore contém a chave {@code chave} e
-     *         {@code false} caso contrário
-     * @throws IllegalArgumentException se {@code key} é {@code null}
+     * @return {@code true} se a ï¿½rvore contï¿½m a chave {@code chave} e
+     *         {@code false} caso contrï¿½rio
+     * @throws IllegalArgumentException se {@code key} ï¿½ {@code null}
      */
     public boolean contem(Chave chave) {
         if (chave == null) 
-        	throw new IllegalArgumentException("A chave fornecida é null!");
+        	throw new IllegalArgumentException("A chave fornecida ï¿½ null!");
         
         return get(chave) != null;
     }
 	
     /**
-     * Retorna o valor associado à chave fornecida.
+     * Retorna o valor associado ï¿½ chave fornecida.
      *
      * @param  chave a chave a ser buscada
-     * @return o valor associado à chave fornecida se tal chave se encontra na árvore
-     *         e {@code null} se a chave não está na árvore
+     * @return o valor associado ï¿½ chave fornecida se tal chave se encontra na ï¿½rvore
+     *         e {@code null} se a chave nï¿½o estï¿½ na ï¿½rvore
      * @throws IllegalArgumentException if {@code chave} is {@code null}
      */
     public Valor get(Chave chave) 
@@ -195,9 +195,9 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     private Valor get(No x, Chave chave) 
     {
         if(chave == null) 
-        	throw new IllegalArgumentException("A chave fornecida é null!");
+        	throw new IllegalArgumentException("A chave fornecida ï¿½ null!");
         
-        /* A chave não se encontra na árvore. */
+        /* A chave nï¿½o se encontra na ï¿½rvore. */
         if(x == null)
         	return null;
         
@@ -212,19 +212,19 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     }
     
     /**
-     * Insere na árvore binária de busca o par (chave, valor) fornecido. Caso a árvore
-     * já possua a chave especificada, o valor antigo é sobrescrito com o novo valor 
-     * fornecido. Remove o nó de chave igual à chave fornecida caso o valor especificado
+     * Insere na ï¿½rvore binï¿½ria de busca o par (chave, valor) fornecido. Caso a ï¿½rvore
+     * jï¿½ possua a chave especificada, o valor antigo ï¿½ sobrescrito com o novo valor 
+     * fornecido. Remove o nï¿½ de chave igual ï¿½ chave fornecida caso o valor especificado
      * seja {@code null}.
      *
      * @param  chave a chave fornecida
      * @param  valor o valor fornecido
-     * @throws IllegalArgumentException se {@code chave} é {@code null}
+     * @throws IllegalArgumentException se {@code chave} ï¿½ {@code null}
      */
     public void put(Chave chave, Valor valor)
     {
         if(chave == null) 
-        	throw new IllegalArgumentException("A chave fornecida é null!");
+        	throw new IllegalArgumentException("A chave fornecida ï¿½ null!");
         
         if(valor == null) {
             delete(chave);
@@ -236,7 +236,7 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
 
     private No put(No x, Chave chave, Valor valor)
     {
-    	/* Caso base: encontrou a posição de inserção. */
+    	/* Caso base: encontrou a posiï¿½ï¿½o de inserï¿½ï¿½o. */
         if (x == null)
         	return new No(chave, valor);
         
@@ -246,30 +246,30 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
         	x.esq = put(x.esq, chave, valor);
         else if(cmp > 0) /* Deve-se ir para a direita. */
         	x.dir = put(x.dir, chave, valor);
-        else /* Caso tenha encontrado nó de mesma chave. */
+        else /* Caso tenha encontrado nï¿½ de mesma chave. */
         	x.valor = valor;
         
         return x;
     }
 	
     /**
-     * Remove o nó de menor chave da árvore.
+     * Remove o nï¿½ de menor chave da ï¿½rvore.
      *
-     * @throws NoSuchElementException se a árvore está vazia
+     * @throws NoSuchElementException se a ï¿½rvore estï¿½ vazia
      */
     public void deleteMin() 
     {
         if(vazia())
-        	throw new NoSuchElementException("A árvore está vazia!");
+        	throw new NoSuchElementException("A ï¿½rvore estï¿½ vazia!");
         
         raiz = deleteMin(raiz);
     }
 
-    /* Método recursivo que anda sempre para a esquerda, procurando o nó
+    /* Mï¿½todo recursivo que anda sempre para a esquerda, procurando o nï¿½
      * de menor chave a ser removido. */
     private No deleteMin(No x) 
     {
-    	/* Caso não haja filho à esquerda, o nó corrente possui a menor chave. */
+    	/* Caso nï¿½o haja filho ï¿½ esquerda, o nï¿½ corrente possui a menor chave. */
         if(x.esq == null) 
         	return x.dir;
         
@@ -279,19 +279,19 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     }
 
     /**
-     * Remove o nó de maior chave da árvore.
+     * Remove o nï¿½ de maior chave da ï¿½rvore.
      *
-     * @throws NoSuchElementException se a árvore está vazia
+     * @throws NoSuchElementException se a ï¿½rvore estï¿½ vazia
      */
     public void deleteMax()
     {
         if(vazia())
-        	throw new NoSuchElementException("A árvore está vazia!");
+        	throw new NoSuchElementException("A ï¿½rvore estï¿½ vazia!");
         
         raiz = deleteMax(raiz);
     }
 
-    /* Método recursivo que anda sempre para a direita, procurando o nó
+    /* Mï¿½todo recursivo que anda sempre para a direita, procurando o nï¿½
      * de maior chave a ser removido. */
     private No deleteMax(No x) 
     {
@@ -304,18 +304,18 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     }
     
     /**
-     * Remove o nó cuja chave seja igual à {@code chave} fornecida.
+     * Remove o nï¿½ cuja chave seja igual ï¿½ {@code chave} fornecida.
      * 
      * @param chave a chave fornecida
-     * @return {@code true} se foi possível remover o nó de chave {@code chave} e
-     *         {@code false} caso contrário
+     * @return {@code true} se foi possï¿½vel remover o nï¿½ de chave {@code chave} e
+     *         {@code false} caso contrï¿½rio
      */
     public void delete(Chave chave)
     {    	
     	raiz = delete(raiz, chave);    	
     }
     
-    /* Remove o nó com o valor "val" da "árvore" a partir do nó para o qual está sendo chamada a função. Obs: "ref_no" é o ponteiro que referencia o nó para o qual está sendo chamada a função, o qual pode ter que ser modificado. Retorna false se o valor não pertencer à "árvore".
+    /* Remove o nï¿½ com o valor "val" da "ï¿½rvore" a partir do nï¿½ para o qual estï¿½ sendo chamada a funï¿½ï¿½o. Obs: "ref_no" ï¿½ o ponteiro que referencia o nï¿½ para o qual estï¿½ sendo chamada a funï¿½ï¿½o, o qual pode ter que ser modificado. Retorna false se o valor nï¿½o pertencer ï¿½ "ï¿½rvore".
     */
     private No delete(No x, Chave chave)
     {
@@ -337,13 +337,13 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     		
     		No t = x;
 
-    		/* Pega o menor da subárvore direita (mais à esquerda). */
+    		/* Pega o menor da subï¿½rvore direita (mais ï¿½ esquerda). */
     		x = min(t.dir);
 
     		/* Remove o menor. */
     		x.dir = deleteMin(t.dir);
 
-    		/* A subárvore esquerda se mantém a mesma. */
+    		/* A subï¿½rvore esquerda se mantï¿½m a mesma. */
     		x.esq = t.esq;
     	}
 
@@ -352,20 +352,20 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     
     
     /**
-     * Retorna a maior chave na árvore que é menor ou igual à {@code chave} fornecida.
+     * Retorna a maior chave na ï¿½rvore que ï¿½ menor ou igual ï¿½ {@code chave} fornecida.
      *
      * @param  chave a chave fornecida
-     * @return a maior chave na árvore menor ou igual à {@code chave}
-     * @throws NoSuchElementException se a árvore está vazia
-     * @throws IllegalArgumentException se a {@code chave} é {@code null}
+     * @return a maior chave na ï¿½rvore menor ou igual ï¿½ {@code chave}
+     * @throws NoSuchElementException se a ï¿½rvore estï¿½ vazia
+     * @throws IllegalArgumentException se a {@code chave} ï¿½ {@code null}
      */
     public Chave piso(Chave chave)
     {
         if (chave == null)
-        	throw new IllegalArgumentException("A chave fornecida é null!");
+        	throw new IllegalArgumentException("A chave fornecida ï¿½ null!");
         
         if (vazia()) 
-        	throw new NoSuchElementException("A árvore está vazia!");
+        	throw new NoSuchElementException("A ï¿½rvore estï¿½ vazia!");
         
         No x = piso(raiz, chave);
         
@@ -398,20 +398,20 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
 
     
     /**
-     * Retorna a menor chave na árvore que é maior ou igual à {@code chave} fornecida.
+     * Retorna a menor chave na ï¿½rvore que ï¿½ maior ou igual ï¿½ {@code chave} fornecida.
      *
      * @param  chave a chave fornecida
-     * @return a menor chave na árvore maior ou igual à {@code chave}
-     * @throws NoSuchElementException se a árvore está vazia
-     * @throws IllegalArgumentException se a {@code chave} é {@code null}
+     * @return a menor chave na ï¿½rvore maior ou igual ï¿½ {@code chave}
+     * @throws NoSuchElementException se a ï¿½rvore estï¿½ vazia
+     * @throws IllegalArgumentException se a {@code chave} ï¿½ {@code null}
      */
     public Chave topo(Chave chave)
     {
         if (chave == null) 
-        	throw new IllegalArgumentException("A chave fornecida é null!");
+        	throw new IllegalArgumentException("A chave fornecida ï¿½ null!");
 
         if (vazia())
-        	throw new NoSuchElementException("A árvore está vazia!");
+        	throw new NoSuchElementException("A ï¿½rvore estï¿½ vazia!");
         
         No x = topo(raiz, chave);
         
@@ -443,35 +443,16 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
         
         return topo(x.dir, chave); 
     } 
-    
-    
-    /**
-     * Retorna o número de nós na árvore cujas chaves são estritamente menores do que {@code chave}.
-     *
-     * @param  chave a chave fornecida
-     * @return o número de nós na árvore cujas chaves são estritamente menores do que {@code chave}
-     * @throws IllegalArgumentException se {@code chave} é {@code null}
-     */
-    public int rank(Chave chave) {
-    	/* O aluno deve fazer como exercício. */
-    	return 0;
-    } 
-
-    // Número de chaves na subárvore que são estritamente menores do que chave.
-    private int rank(Chave chave, No x) {
-    	/* O aluno deve fazer como exercício. */
-    	return 0;
-    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
-        QUESTÃO 2:
-        A complexidade do método constroiArvore é, em média, O(n log n), onde n é a quantidade de elementos no vetor.
+        QUESTï¿½O 2:
+        A complexidade do mï¿½todo constroiArvore ï¿½, em mï¿½dia, O(n log n), onde n ï¿½ a quantidade de elementos no vetor.
 
         OBS:
-        A complexidade do método put é O(h), onde h é a altura da arvore de busca, porém a complexidade em relação a quantidade de elementos pode variar.
-        Se a árvore estiver perfeitamente balanceada, a complexidade de inserção será O(log n) para cada elemento, resultando em uma complexidade total de O(n log n)
-        No entanto, se a árvore estiver desbalanceada, a complexidade de inserção pode ser O(n), o que resultaria em uma complexidade total de O(n²).
+        A complexidade do mï¿½todo put ï¿½ O(h), onde h ï¿½ a altura da arvore de busca, porï¿½m a complexidade em relaï¿½ï¿½o a quantidade de elementos pode variar.
+        Se a ï¿½rvore estiver perfeitamente balanceada, a complexidade de inserï¿½ï¿½o serï¿½ O(log n) para cada elemento, resultando em uma complexidade total de O(n log n)
+        No entanto, se a ï¿½rvore estiver desbalanceada, a complexidade de inserï¿½ï¿½o pode ser O(n), o que resultaria em uma complexidade total de O(nï¿½).
      */
 
     public void constroiArvore(int[] vetor){
@@ -484,13 +465,13 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     }
 
     /**
-        QUESTÃO 3:
-           A complexidade do método transformaArvBinBusca é, em média, O(n log n), onde n é a quantidade de elementos na arvbin.
+        QUESTï¿½O 3:
+           A complexidade do mï¿½todo transformaArvBinBusca ï¿½, em mï¿½dia, O(n log n), onde n ï¿½ a quantidade de elementos na arvbin.
 
         OBS:
-        A complexidade do método put é O(h), onde h é a altura da arvore de busca, porém a complexidade em relação a quantidade de elementos pode variar.
-        Se a árvore estiver perfeitamente balanceada, a complexidade de inserção será O(log n) para cada elemento, resultando em uma complexidade total de O(n log n)
-        No entanto, se a árvore estiver desbalanceada, a complexidade de inserção pode ser O(n), o que resultaria em uma complexidade total de O(n²).
+        A complexidade do mï¿½todo put ï¿½ O(h), onde h ï¿½ a altura da arvore de busca, porï¿½m a complexidade em relaï¿½ï¿½o a quantidade de elementos pode variar.
+        Se a ï¿½rvore estiver perfeitamente balanceada, a complexidade de inserï¿½ï¿½o serï¿½ O(log n) para cada elemento, resultando em uma complexidade total de O(n log n)
+        No entanto, se a ï¿½rvore estiver desbalanceada, a complexidade de inserï¿½ï¿½o pode ser O(n), o que resultaria em uma complexidade total de O(nï¿½).
      */
 
     public void transformaArvBinBusca(Arvbin<Chave> arvoreBinaria){
@@ -508,13 +489,13 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     }
 
     /**
-       QUESTÃO 4:
-        A complexidade do método removeForaIntervalo é, em média, O(n log n), onde n é a quantidade de elementos na arvbin.
+       QUESTï¿½O 4:
+        A complexidade do mï¿½todo removeForaIntervalo ï¿½, em mï¿½dia, O(n log n), onde n ï¿½ a quantidade de elementos na arvbin.
 
         OBS:
-        A complexidade do método delete é O(h), onde h é a altura da arvore de busca, porém a complexidade em relação a quantidade de elementos pode variar.
-        Se a árvore estiver perfeitamente balanceada, a complexidade de remoção será O(log n) para cada elemento, resultando em uma complexidade total de O(n log n)
-        No entanto, se a árvore estiver desbalanceada, a complexidade de remoção pode ser O(n), o que resultaria em uma complexidade total de O(n²).
+        A complexidade do mï¿½todo delete ï¿½ O(h), onde h ï¿½ a altura da arvore de busca, porï¿½m a complexidade em relaï¿½ï¿½o a quantidade de elementos pode variar.
+        Se a ï¿½rvore estiver perfeitamente balanceada, a complexidade de remoï¿½ï¿½o serï¿½ O(log n) para cada elemento, resultando em uma complexidade total de O(n log n)
+        No entanto, se a ï¿½rvore estiver desbalanceada, a complexidade de remoï¿½ï¿½o pode ser O(n), o que resultaria em uma complexidade total de O(nï¿½).
     */
     public boolean removeForaIntervalo(Chave chaveMin, Chave chaveMax) {
         if (raiz == null)
@@ -547,12 +528,12 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     }
 
     /**
-       QUESTÃO 5:
-        A complexidade do método obtemAncestralComum é, no pior caso, O(n), onde n é a quantidade de elementos na arvbin.
+       QUESTï¿½O 5:
+        A complexidade do mï¿½todo obtemAncestralComum ï¿½, no pior caso, O(n), onde n ï¿½ a quantidade de elementos na arvbin.
 
         OBS:
-        A complexidade do método obtemAncestralComum é O(h), onde h é a altura da arvore de busca, porém a complexidade em relação a quantidade de elementos pode variar.
-        Se a árvore estiver perfeitamente balanceada, a complexidade será O(log n) e se a árvore estiver desbalanceada, a complexidade será O(n).
+        A complexidade do mï¿½todo obtemAncestralComum ï¿½ O(h), onde h ï¿½ a altura da arvore de busca, porï¿½m a complexidade em relaï¿½ï¿½o a quantidade de elementos pode variar.
+        Se a ï¿½rvore estiver perfeitamente balanceada, a complexidade serï¿½ O(log n) e se a ï¿½rvore estiver desbalanceada, a complexidade serï¿½ O(n).
     */
     public No obtemAncestralComum(No primeiroNo, No segundoNo) {
         return obtemAncestralComumAux(raiz, primeiroNo, segundoNo);

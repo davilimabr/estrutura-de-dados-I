@@ -1,0 +1,82 @@
+Vetor original: 22 4 35 12 3 18 12 55
+
+Passo 1: Construir o heap máximo inicial
+- Vetor: 22 4 35 12 3 18 12 55
+- Heap construído: 55 22 35 12 3 18 12 4
+
+Passo 2: Realizar o Heapsort
+- Trocar o maior elemento (55) com o último elemento não classificado (4) e diminuir o tamanho do heap
+- Vetor: 4 22 35 12 3 18 12 55
+- Heap parcial: 35 22 18 12 3 4 12
+- Vetor classificado (após o primeiro passo do Heapsort): 55
+
+Passo 3: Refazer o heap com o tamanho reduzido
+- Vetor: 35 22 18 12 3 4 12
+- Heap construído: 35 22 18 12 3 4 12
+
+Passo 4: Realizar o Heapsort novamente
+- Trocar o maior elemento (35) com o último elemento não classificado (12) e diminuir o tamanho do heap
+- Vetor: 12 22 18 12 3 4 35
+- Heap parcial: 22 12 18 12 3 4
+- Vetor classificado (após o segundo passo do Heapsort): 55 35
+
+Passo 5: Refazer o heap com o tamanho reduzido
+- Vetor: 22 12 18 12 3 4
+- Heap construído: 22 12 18 12 3 4
+
+Passo 6: Realizar o Heapsort novamente
+- Trocar o maior elemento (22) com o último elemento não classificado (4) e diminuir o tamanho do heap
+- Vetor: 4 12 18 12 3 22
+- Heap parcial: 18 12 4 12 3
+- Vetor classificado (após o terceiro passo do Heapsort): 55 35 22
+
+Passo 7: Refazer o heap com o tamanho reduzido
+- Vetor: 18 12 4 12 3
+- Heap construído: 18 12 4 12 3
+
+Passo 8: Realizar o Heapsort novamente
+- Trocar o maior elemento (18) com o último elemento não classificado (3) e diminuir o tamanho do heap
+- Vetor: 3 12 4 12 18
+- Heap parcial: 12 12 4 3
+- Vetor classificado (após o quarto passo do Heapsort): 55 35 22 18
+
+Passo 9: Refazer o heap com o tamanho reduzido
+- Vetor: 12 12 4 3
+- Heap construído: 12 12 4 3
+
+Passo 10: Realizar o Heapsort novamente
+- Trocar o maior elemento (12) com o último elemento não classificado (3) e diminuir o tamanho do heap
+- Vetor:
+
+ 3 12 4 12
+- Heap parcial: 12 4 3
+- Vetor classificado (após o quinto passo do Heapsort): 55 35 22 18 12
+
+Passo 11: Refazer o heap com o tamanho reduzido
+- Vetor: 12 4 3
+- Heap construído: 12 4 3
+
+Passo 12: Realizar o Heapsort novamente
+- Trocar o maior elemento (12) com o último elemento não classificado (3) e diminuir o tamanho do heap
+- Vetor: 3 4 12
+- Heap parcial: 4 3
+- Vetor classificado (após o sexto passo do Heapsort): 55 35 22 18 12 12
+
+Passo 13: Refazer o heap com o tamanho reduzido
+- Vetor: 4 3
+- Heap construído: 4 3
+
+Passo 14: Realizar o Heapsort novamente
+- Trocar o maior elemento (4) com o último elemento não classificado (3) e diminuir o tamanho do heap
+- Vetor: 3 4
+- Heap parcial: 3
+- Vetor classificado (após o sétimo passo do Heapsort): 55 35 22 18 12 12 4
+
+Passo 15: Refazer o heap com o tamanho reduzido
+- Vetor: 3
+- Heap construído: 3
+
+Passo 16: Realizar o Heapsort novamente
+- Vetor classificado (após o oitavo passo do Heapsort): 55 35 22 18 12 12 4 3
+
+Vetor ordenado: 3 4 12 12 18 22 35 55

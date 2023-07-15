@@ -23,8 +23,20 @@ public class HeapBinariaMinima {
 		constroiHeap();
 	}
 
+	public int getN() {
+		return n;
+	}
+
+	public int getTam() {
+		return tam;
+	}
+
+	public int[] getVetor() {
+		return vetor;
+	}
+
 	/* Testa se a fila de prioridade está logicamente vazia.
-	   Retorna true se vazia, false, caso contrário. */
+           Retorna true se vazia, false, caso contrário. */
 	public boolean vazia() {
 		return n == 0;
 	}
@@ -146,39 +158,17 @@ public class HeapBinariaMinima {
 
 	/*
 	QUESTÃO 2:
-
+		A complexidade desse método é O(n) onde n é a quantidade de elementos da heap.
+		Isso porque é chamado o método constroiHeap() que possui complexidade O(n) e o restante da implementação é constante.
 	 */
-
-
 	public HeapBinariaMinima(HeapBinariaMaxima heapMaxima){
-		tam = heapMaxima.getTamanho();
-		int i = tam;
-		vetor = new int[tam+1];
-		n = 0;
+		vetor = heapMaxima.getVetor();
+		n = heapMaxima.getN();
+		tam = heapMaxima.getTam();
 
-		while(!heapMaxima.vazia()){
-			vetor[i] = heapMaxima.max();
-			heapMaxima.removeMax();
-			i--;
-			n++;
-		}
+		constroiHeap();
 	}
-/*
-	public HeapBinariaMinima(HeapBinariaMaxima heapMaxima){
-		int[] heapMaximaVetor = heapMaxima.getVetor();
-
-		n = heapMaximaVetor.length;
-		vetor = new int[n+1];
-
-		for(int i = n-1, j = 0; i > 0 ; i--, j++)
-			vetor[j] = heapMaximaVetor[i];
-	}
-
- */
 }
-
-//{, ,,,,,};
-
 
 
 

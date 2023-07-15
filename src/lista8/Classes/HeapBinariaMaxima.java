@@ -1,4 +1,9 @@
 package lista8.Classes;
+
+import lista7.Classes.Arvbin;
+
+import java.util.Arrays;
+
 public class HeapBinariaMaxima
 {
 	private int n;               /* Numero de elementos no heap. */
@@ -26,13 +31,20 @@ public class HeapBinariaMaxima
 		constroiHeap();
 	}
 
-	public int getTamanho(){
+	public int getN() {
+		return n;
+	}
+
+	public int getTam() {
 		return tam;
 	}
-    public int[] getVetor(){ return vetor; }
+
+	public int[] getVetor() {
+		return vetor;
+	}
 
 	/* Testa se a fila de prioridade est� logicamente vazia.
-	   Retorna true se vazia, false, caso contr�rio. */
+           Retorna true se vazia, false, caso contr�rio. */
 	public boolean vazia()
 	{
 		return n == 0;
@@ -177,5 +189,71 @@ public class HeapBinariaMaxima
 			resta--;
 			refaz(raiz);
 		}
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+	QUESTÃO 3:
+		A complexidade desse método é O(n) onde n é a quantidade de elementos da heap.
+		Isso porque é chamado o método constroiHeap() que possui complexidade O(n) e o restante da implementação é constante.
+	 */
+	public HeapBinariaMaxima(HeapBinariaMinima heapMinima){
+		vetor = heapMinima.getVetor();
+		n = heapMinima.getN();
+		tam = heapMinima.getTam();
+
+		constroiHeap();
+	}
+
+	/*
+	 QUESTÃO 4:
+	  Esse método possui complexidade equivalente a O(n).
+
+
+	  o método transformaArvoreCompletaEmVetor(), possui complexidade O(n), pois percorre todos os nós da arvore e o método constroiHeap() possui complexidade O(n)
+	  então temos: O(n) + O(n) = O(2n) --> crescimento assintótico equivalente a O(n)
+	*/
+	public void transformaHeapMaxima(Arvbin<Integer> arvore){
+		vetor = Arvbin.transformaArvoreCompletaEmVetor(arvore); // implementação desse método está na classe ArvBin, dentro da pasta "classes" da lista 7
+		n = tam = vetor.length-1;
+
+		constroiHeap();
+	}
+
+	/*
+	QUESTÃO 5:
+		A complexidade desse método é O(n), sendo n a quantidade de elementos da árvore representada pelo vetor.
+		Temos um loop que percorre de 1 até n/2, assim: O(n/2) -> equivalente a O(n)
+
+		complexidade O(n)
+	 */
+	public static boolean verificaPropriedadeHeap(int[] vetor){
+		for(int i = 1; i <= vetor.length/2; i++){
+			int filhoEsq = i * 2 < vetor.length ? vetor[i*2] : Integer.MIN_VALUE;
+			int filhoDir = i * 2 + 1< vetor.length ? vetor[i*2+1] : Integer.MIN_VALUE;
+
+			if(vetor[i] < filhoEsq || vetor[i] < filhoDir)
+				return false;
+		}
+		return true;
+	}
+
+	/*
+	QUESTÃO 6:
+    A complexidade desse método é O(logn), sendo n a quantidade de elementos da árvore representada pelo vetor.
+    Isso porque é chamado o método refaz() que possui complexidade O(logn) e o restante da implementação é constante.
+
+    complexidade O(n)
+ 	*/
+	public int remove(int i){
+		if(i < 1 || i > n)
+			return Integer.MIN_VALUE;
+
+		int removido = vetor[i];
+		vetor[i] = vetor[n];
+		n--;
+		refaz(i);
+		return removido;
 	}
 }
