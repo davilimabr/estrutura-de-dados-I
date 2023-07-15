@@ -11,6 +11,12 @@
 [Enunciados][enum5] - [Resoluções][res5]
 ### Lista 6: conjuntos
 [Enunciados][enum6] - [Resoluções][res6]
+### Lista 7: conjuntos
+[Enunciados][enum7] - [Resoluções][res7]
+### Lista 8: conjuntos
+[Enunciados][enum8] - [Resoluções][res8]
+### Lista 9: conjuntos
+[Enunciados][enum9] - [Resoluções][res9]
 
 
 
@@ -20,6 +26,9 @@
 [enum4]:<https://github.com/davilimabr/estrutura-de-dados-I/blob/main/listas/EDD1%20-%20Lista%204.pdf>
 [enum5]:<https://github.com/davilimabr/estrutura-de-dados-I/blob/main/listas/EDD1%20-%20Lista%205.pdf>
 [enum6]:<https://github.com/davilimabr/estrutura-de-dados-I/blob/main/listas/EDD1%20-%20Lista%206.pdf>
+[enum7]:<https://github.com/davilimabr/estrutura-de-dados-I/blob/main/listas/EDD1%20-%20Lista%207.pdf>
+[enum8]:<https://github.com/davilimabr/estrutura-de-dados-I/blob/main/listas/EDD1%20-%20Lista%208.pdf>
+[enum9]:<https://github.com/davilimabr/estrutura-de-dados-I/blob/main/listas/EDD1%20-%20Lista%209.pdf>
 
 
 
@@ -29,3 +38,7 @@
 [res4]:<https://github.com/davilimabr/estrutura-de-dados-I/tree/main/src/lista4>
 [res5]:<https://github.com/davilimabr/estrutura-de-dados-I/tree/main/src/lista5>
 [res6]:<https://github.com/davilimabr/estrutura-de-dados-I/tree/main/src/lista6>
+[res7]:<https://github.com/davilimabr/estrutura-de-dados-I/tree/main/src/lista7>
+[res8]:<https://github.com/davilimabr/estrutura-de-dados-I/tree/main/src/lista8>
+[res9]:<https://github.com/davilimabr/estrutura-de-dados-I/tree/main/src/lista9>
+
