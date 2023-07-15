@@ -11,11 +11,11 @@
 [Enunciados][enum5] - [Resoluções][res5]
 ### Lista 6: conjuntos
 [Enunciados][enum6] - [Resoluções][res6]
-### Lista 7: conjuntos
+### Lista 7: Árvores binárias
 [Enunciados][enum7] - [Resoluções][res7]
-### Lista 8: conjuntos
+### Lista 8: Fila de prioridade
 [Enunciados][enum8] - [Resoluções][res8]
-### Lista 9: conjuntos
+### Lista 9: Árvore binária de busca
 [Enunciados][enum9] - [Resoluções][res9]
 
 
